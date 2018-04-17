@@ -27,6 +27,11 @@ export HTTPS_PROXY=http://127.0.0.1:8123
 curl: (35) OpenSSL SSL_connect: SSL_ERROR_SYSCALL in connection to chrome-infra-packages.appspot.com:443
 
 ## 执行官方说明中的命令
+为了避免因为下载过慢出现hook timeout,执行下面的命令
+
 ```
-curl -s "https://fuchsia.googlesource.com/scripts/+/master/bootstrap?format=TEXT" | base64 --decode | bash -s topaz
+curl -s "https://fuchsia.googlesource.com/scripts/+/master/bootstrap?format=TEXT" | base64 --decode > bootstrap
 ```
+
+修改boostrap脚本中jiri update行，在后面添加参数 -hook-timeout=120
+再执行./bootstrap topaz
