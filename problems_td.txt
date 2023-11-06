@@ -1,0 +1,25 @@
+1. 下载ABB IRB1200-5机器人的STEP模型文件，导入CAD软件，组装成机器人。寻找厂商文档查询每个joint的位置以及工作范围。
+    导出模型为STL格式。
+
+2. 下载Qt 6.6.0 在Windows或Linux下用CMake编译项目 https://github.com/xuzhongxing/qtdemo 并运行
+
+3. 下面这段C++代码的意思是什么：
+
+std::filesystem::path mpl::common::GHD() {
+#ifdef linux
+    return std::filesystem::path(std::getenv("HOME"));
+#endif
+
+#ifdef _WIN32
+    char home[1024] = {0};
+    unsigned pathSize = GetEnvironmentVariable("USERPROFILE", home, 1024);
+    if (pathSize ==0 || pathSize > 1024) {
+        return std::filesystem::path("C:\\");
+    } else {
+        return std::filesystem::path(home);
+    }
+#endif
+}
+
+4. 在网络上寻找一个名为alr96346_fren的pdf文件。
+
